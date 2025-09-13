@@ -2,16 +2,16 @@
 
 This repository contains a full SHA-256 implementation in Circom 2.2.2, compatible with constraint systems such as R1CS. The implementation is designed to hash binary messages of variable lengths up to 1024 bytes.
 
-├── main.circom             # Entry point: calls Sha256Main and logs hex digest
-├── Sha256.circom           # Top-level SHA256 wrapper circuit
-├── PadMessage.circom       # Pads input message according to SHA256 standard
-├── MessageSchedule.circom  # Expands 512-bit blocks into 64 32-bit words
-├── Sha256Compression.circom# Performs 64 compression rounds on the padded input
-├── Sha256Round.circom      # A single round of SHA256 compression function
-├── K_constants.circom      # Outputs 64 SHA256 round constants
-├── H_constants.circom      # Outputs initial SHA256 state constants
-├── BitOps.circom           # Utility circuits (Num2Bits, Bits2Num)
-├── test/                   # Folder for input/output tests
+- main.circom             # Entry point: calls Sha256Main and logs hex digest
+- Sha256.circom           # Top-level SHA256 wrapper circuit
+- PadMessage.circom       # Pads input message according to SHA256 standard
+- MessageSchedule.circom  # Expands 512-bit blocks into 64 32-bit words
+- Sha256Compression.circom# Performs 64 compression rounds on the padded input
+- Sha256Round.circom      # A single round of SHA256 compression function
+- K_constants.circom      # Outputs 64 SHA256 round constants
+- H_constants.circom      # Outputs initial SHA256 state constants
+- BitOps.circom           # Utility circuits (Num2Bits, Bits2Num)
+- test/                   # Folder for input/output tests
 
 # Core Templates
 ## PadMessage
@@ -23,7 +23,7 @@ Function: Pads the message with 0x80, then zeroes, and finally appends a 64-bit 
 ## MessageSchedule
 Input: input_bytes[64] (padded 512-bit block)
 Output: w[64][32] (expanded message schedule)
-Function: Converts the input block into 64 32-bit words using σ0, σ1, and prior values as per SHA-256 spec.
+Function: Converts the input block into 64 32-bit words using σ0, σ1, and prior values as per the SHA-256 spec.
 
 ## Sha256Round
 Inputs: Eight 32-bit values: a through h
